@@ -3,6 +3,7 @@
 	"name": "Veil",
 	"scopeName": "source.veil",
 	"patterns": [
+		{ "include": "#comments" },
 		{ "include": "#keywords" },
 		{ "include": "#types" },
 		{ "include": "#booleans" },
@@ -14,19 +15,25 @@
 		{ "include": "#variables" }
 	],
 	"repository": {
+		"comments": {
+			"patterns": [
+				{ "name": "comment.line.double-slash.veil", "match": "//.*$" },
+				{ "name": "comment.block.veil", "begin": "/\\*", "end": "\\*/" }
+			]
+		},
 		"keywords": {
 			"patterns": [
-				{ "name": "keyword.control.veil", "match": "\\b(let|const|if|else)\\b" }
+				{ "name": "keyword.control.veil", "match": "\\b(let|const|if|else|elseif)\\b" }
 			]
 		},
 		"types": {
 			"patterns": [
-				{ "name": "storage.type.veil", "match": "\\b(int|string|bool)\\b" }
+				{ "name": "storage.type.veil", "match": "\\b(int|string|bool|float)\\b" }
 			]
 		},
 		"booleans": {
 			"patterns": [
-				{ "name": "constant.language.boolean.veil", "match": "\\b(true|false)\\b" }
+				{ "name": "constant.language.boolean.veil", "match": "\\b(true|false|null)\\b" }
 			]
 		},
 		"functions": {
@@ -61,7 +68,7 @@
 			"patterns": [
 				{
 					"name": "variable.other.veil",
-					"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b(?=\\s*[:=])"
+					"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b"
 				}
 			]
 		}

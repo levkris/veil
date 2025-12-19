@@ -33,6 +33,10 @@ if (favColour === "blue") {
     print("You like blue!");
 }
 
+favColour = "red"
+
+printS("Your fav colour is " + favColour);
+
 if (favNumber > 40) {
     dump("Fav number is greater than 40");
 } else {
