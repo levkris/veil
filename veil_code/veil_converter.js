@@ -80,7 +80,15 @@ function sanitize(val){
 
 function evaluateExpression(expr, variables){
     expr = expr.trim()
-    
+
+    let declMatch = expr.match(/^(let|const)\s+(\w+)(\s*:\s*\w+)?\s*=\s*(.+);?$/)
+    if(declMatch){
+        let [, , varName, , valueExpr] = declMatch
+        let value = evaluateExpression(valueExpr, variables)
+        variables[varName] = value
+        return value
+    }
+
     let isDeclaration = false
     if(expr.includes(':')){
         let parts = expr.split('=')
@@ -93,16 +101,16 @@ function evaluateExpression(expr, variables){
             }
         }
     }
-    
+
     let parts = []
     let current = ''
     let inString = false
     let stringChar = null
     let inTemplate = false
-    
+
     for(let i = 0; i < expr.length; i++){
         let char = expr[i]
-        
+
         if(!inString && !inTemplate && (char === '"' || char === "'" || char === '`')){
             if(current) parts.push({type: 'code', value: current})
             current = char
@@ -125,18 +133,18 @@ function evaluateExpression(expr, variables){
             current += char
         }
     }
-    
+
     if(current) parts.push({type: inString || inTemplate ? 'string' : 'code', value: current})
-    
+
     let result = ''
     for(let part of parts){
         if(part.type === 'code'){
             let code = part.value
-            
+
             if(isDeclaration){
                 let varMatch = code.match(/^(\w+)\s*=/)
                 let declaringVar = varMatch ? varMatch[1] : null
-                
+
                 for(let v in variables){
                     if(v.startsWith('__')) continue
                     if(v === declaringVar) continue
@@ -163,8 +171,9 @@ function evaluateExpression(expr, variables){
             result += part.value
         }
     }
-    
+
     try {
+        if(result.endsWith(';')) result = result.slice(0, -1)
         return Function('"use strict";return (' + result + ')')()
     } catch(e){
         console.error("Invalid expression:", result)
@@ -175,6 +184,8 @@ function evaluateExpression(expr, variables){
 function executeLine(line, variables){
     let trimmed = line.trim()
     let isControlFlow = /^if\s*\(|^else|^}/.test(trimmed)
+    let isBlockStart = /{$/.test(trimmed)
+    let isBlockEnd = /^}/.test(trimmed)
 
     if(variables.__skipExecution && !isControlFlow) return
 
@@ -186,22 +197,19 @@ function executeLine(line, variables){
         let last = variables.__ifStack[variables.__ifStack.length - 1]
         let wasExecuted = last.results.includes(true)
         variables.__skipExecution = wasExecuted
-    } else if(/^}/.test(trimmed)){
+    } else if(isBlockEnd){
         let lastBlock = variables.__blockStack.pop()
         if(lastBlock) variables.__skipExecution = lastBlock.skip
     }
 
     let matched = false
-
     for(let trigger in veilFunctions){
-        let {handler, regex, rawTrigger} = veilFunctions[trigger]
+        let {handler, regex} = veilFunctions[trigger]
         let match = line.match(regex)
-        
         if(match){
             try {
                 let beforeTrigger = match[1] ? match[1].trim() : ''
                 let afterTrigger = match[2] ? match[2].trim() : ''
-                
                 handler(line, variables, evaluateExpression, sanitize, beforeTrigger, afterTrigger)
                 matched = true
                 break
@@ -210,9 +218,13 @@ function executeLine(line, variables){
             }
         }
     }
-
-    if(!matched && trimmed && !trimmed.startsWith('//')){
-        console.warn('Unknown command:', line)
+    
+    if(!matched && trimmed && !trimmed.startsWith('//') && !isBlockStart && !isBlockEnd){
+        if(!trimmed.endsWith(';')){
+            console.warn('Line missing semicolon:', line)
+        } else {
+            evaluateExpression(trimmed.slice(0, -1), variables)
+        }
     }
 }
 

@@ -1,7 +1,7 @@
-let age: int = 22
-let name: string = "Lev"
-let isAdmin: bool = true
-const ateToday: bool = false
+let age: int = 22;
+let name: string = "Lev";
+let isAdmin: bool = true;
+const ateToday: bool = false;
 
 if (age > 18) {
     print("Adult");
@@ -26,14 +26,14 @@ appendToBody(`
     Testing
 `);
 
-let favColour: string = "blue"
-let favNumber: int = 42
+let favColour: string = "blue";
+let favNumber: int = 42;
 
 if (favColour === "blue") {
     print("You like blue!");
 }
 
-favColour = "red"
+favColour = "red";
 
 printS("Your fav colour is " + favColour);
 
