@@ -1,7 +1,7 @@
 {
   "name": "veil",
   "displayName": "Veil",
-  "description": "Veil is a coding language for your browser that is supported everywhere if you just import it",
+  "description": "Veil is a web-first programming language that runs directly in the browser. It lets you write code as an alternative to JavaScript, automatically converting your Veil code into JavaScript on the fly, no compilation needed.",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.107.0"
