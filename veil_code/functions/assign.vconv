@@ -1,0 +1,27 @@
+// VEIL FUNCTION
+// NAME: assign
+// DESCRIPTION: Assigns a new value to an existing variable
+// TRIGGER: =
+
+// HANDLER
+if(beforeTrigger && afterTrigger && !line.startsWith('let ') && !line.startsWith('const ')){
+    let name = beforeTrigger.trim()
+    let valueExpr = afterTrigger.trim()
+    
+    if(line.includes('==') || line.includes('!=') || line.includes('<=') || line.includes('>=')){
+        return
+    }
+    
+    if(!variables.hasOwnProperty(name)){
+        console.error(`Cannot assign to '${name}' - variable not declared`)
+        return
+    }
+    
+    if(variables.__varTypes && variables.__varTypes[name] === 'const'){
+        console.error(`Cannot reassign constant variable '${name}'`)
+        return
+    }
+    
+    let value = evaluateExpression(valueExpr, variables)
+    variables[name] = value
+}

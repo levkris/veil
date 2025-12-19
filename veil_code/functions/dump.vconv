@@ -1,0 +1,11 @@
+// VEIL FUNCTION
+// NAME: dump
+// DESCRIPTION: Displays the value of an expression as formatted text on the page
+// TRIGGER: dump
+
+// HANDLER
+if(line.startsWith("dump(") && line.endsWith(");")){
+    let expr = line.slice(5,-2)
+    let val = evaluateExpression(expr, variables)
+    document.body.innerHTML += `<pre>${sanitize(val)}</pre>`
+}

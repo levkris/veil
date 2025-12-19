@@ -1,0 +1,29 @@
+{
+  "name": "veil",
+  "displayName": "Veil",
+  "description": "Veil is a coding language for your browser that is supported everywhere if you just import it",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "main": "./src/veilHover.js",
+  "categories": [
+    "Programming Languages"
+  ],
+  "activationEvents": [
+      "onLanguage:veil"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "veil",
+      "aliases": ["VEIL", "veil"],
+      "extensions": [".veil"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "veil",
+      "scopeName": "source.veil",
+      "path": "./syntaxes/veil.tmLanguage.json"
+    }]
+  }
+}

@@ -1,0 +1,18 @@
+// VEIL FUNCTION
+// NAME: If Statement
+// DESCRIPTION: Conditional execution
+// TRIGGER: if(
+
+// HANDLER
+let match = line.match(/if\s*\(\s*(.*?)\s*\)\s*\{/)
+if(!match) return
+
+let condition = match[1]
+let result = evaluateExpression(condition, variables)
+
+if(!variables.__ifStack) variables.__ifStack = []
+variables.__ifStack.push({ 
+    results: [!!result]
+})
+
+variables.__skipExecution = !result

@@ -1,0 +1,11 @@
+// VEIL FUNCTION
+// NAME: appendToBody
+// DESCRIPTION: Appends HTML to the page body
+// TRIGGER: appendToBody
+
+// HANDLER
+if(line.startsWith("appendToBody(") && line.endsWith(");")){
+    let expr = line.slice(13,-2)
+    let val = evaluateExpression(expr, variables)
+    document.body.innerHTML += `${val}`
+}

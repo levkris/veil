@@ -1,0 +1,55 @@
+let age: int = 22
+let name: string = "Lev"
+let isAdmin: bool = true
+const ateToday: bool = false
+
+if (age > 18) {
+    print("Adult");
+}
+
+if (isAdmin) {
+    printS("Welcome, admin!");
+}
+
+if (age > 18) {
+    dump("Not a minor");
+    if (ateToday) {
+        dump("You also ate today");
+    } else {
+        dump("But you did not eat today");
+    }
+} else {
+    dump("Minor");
+}
+
+appendToBody(`
+    Testing
+`);
+
+let favColour: string = "blue"
+let favNumber: int = 42
+
+if (favColour === "blue") {
+    print("You like blue!");
+}
+
+if (favNumber > 40) {
+    dump("Fav number is greater than 40");
+} else {
+    dump("Fav number is less than or equal to 40");
+}
+
+appendToBody(`
+    <ul>
+        <li>favColour: ${favColour}</li>
+        <li>favNumber: ${favNumber}</li>
+    </ul>
+`);
+
+if (age > 21) {
+    printS("You are also able to drink");
+} elseif (age > 18) {
+    printS("you are an adult");
+} else {
+    printS("You are a child");
+}

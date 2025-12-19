@@ -1,0 +1,11 @@
+// VEIL FUNCTION
+// NAME: print
+// DESCRIPTION: Prints value to the console without sanitization
+// TRIGGER: print
+
+// HANDLER
+if(line.startsWith("print(") && line.endsWith(");")){
+    let expr = line.slice(6,-2)
+    let val = evaluateExpression(expr, variables)
+    console.log(val)
+}

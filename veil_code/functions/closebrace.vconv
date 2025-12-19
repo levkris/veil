@@ -1,0 +1,23 @@
+// VEIL FUNCTION
+// NAME: Close Brace
+// DESCRIPTION: Closes conditional blocks
+// TRIGGER: }
+
+// HANDLER
+if(variables.__ifStack && variables.__ifStack.length > 0) {
+    variables.__ifStack.pop()
+    
+    variables.__skipExecution = false
+    
+    for(let i = variables.__ifStack.length - 1; i >= 0; i--) {
+        let block = variables.__ifStack[i]
+        if(!block.result && !block.elseExecuted) {
+            variables.__skipExecution = true
+            break
+        }
+        if(block.result && block.elseExecuted) {
+            variables.__skipExecution = true
+            break
+        }
+    }
+}

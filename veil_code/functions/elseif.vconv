@@ -1,0 +1,28 @@
+// VEIL FUNCTION
+// NAME: ElseIf Statement
+// DESCRIPTION: Conditional execution after an if or elseif
+// TRIGGER: } elseif(
+
+// HANDLER
+if(!variables.__ifStack || variables.__ifStack.length === 0) return
+
+let lastChain = variables.__ifStack[variables.__ifStack.length - 1]
+
+let match = line.match(/\}\s*elseif\s*\(\s*(.*?)\s*\)\s*\{/)
+if(!match) return
+
+if(lastChain.results.includes(true)) {
+    variables.__skipExecution = true
+    lastChain.results.push(false)
+} else {
+    let condition = match[1]
+    let result = evaluateExpression(condition, variables)
+
+    if(result) {
+        variables.__skipExecution = false
+        lastChain.results.push(true)
+    } else {
+        variables.__skipExecution = true
+        lastChain.results.push(false)
+    }
+}

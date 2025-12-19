@@ -1,0 +1,22 @@
+// VEIL FUNCTION
+// NAME: let
+// DESCRIPTION: Declares a variable with type annotation
+// TRIGGER: let
+
+// HANDLER
+if(line.startsWith("let ")){
+    let [, rest] = line.split("let ")
+    let [nameType, value] = rest.split(" = ")
+    let [name, type] = nameType.split(":").map(s=>s.trim())
+    value = evaluateExpression(value, variables)
+
+    if(type === "string") value = String(value)
+    else if(type === "int") value = parseInt(value)
+    else if(type === "float") value = parseFloat(value)
+    else if(type === "bool") value = Boolean(value)
+
+    if(!variables.__varTypes) variables.__varTypes = {}
+    variables.__varTypes[name] = 'let'
+    
+    variables[name] = value
+}

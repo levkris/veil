@@ -1,0 +1,19 @@
+// VEIL FUNCTION
+// NAME: Else Statement
+// DESCRIPTION: Executes only if all previous if/else if conditions in the chain are false
+// TRIGGER: } else {
+
+// HANDLER
+if(!variables.__ifStack || variables.__ifStack.length === 0) return
+
+let lastChain = variables.__ifStack[variables.__ifStack.length - 1]
+
+if(line.match(/\}\s*else\s*\{/)) {
+    if(lastChain.results.includes(true)) {
+        variables.__skipExecution = true
+        lastChain.results.push(false)
+    } else {
+        variables.__skipExecution = false
+        lastChain.results.push(true)
+    }
+}

@@ -1,0 +1,15 @@
+{
+  "functions": [
+    {"file": "let.vconv", "trigger": "let "},
+    {"file": "print.vconv", "trigger": "print("},
+    {"file": "printS.vconv", "trigger": "printS("},
+    {"file": "dump.vconv", "trigger": "dump("},
+    {"file": "if.vconv", "trigger": "if ("},
+    {"file": "else.vconv", "trigger": "} else {"},
+    {"file": "closebrace.vconv", "trigger": "}"},
+    {"file": "appendToBody.vconv", "trigger": "appendToBody("},
+    {"file": "const.vconv", "trigger": "const "},
+    {"file": "assign.vconv", "trigger": "="},
+    {"file": "elseif.vconv", "trigger": "} elseif ("}
+  ]
+}

@@ -1,0 +1,29 @@
+// VEIL FUNCTION
+// NAME: const
+// DESCRIPTION: Declares a constant variable with type annotation (cannot be redeclared)
+// TRIGGER: const
+
+// HANDLER
+if(line.startsWith("const ")){
+    let [, rest] = line.split("const ")
+    let [nameType, value] = rest.split(" = ")
+    let [name, type] = nameType.split(":").map(s=>s.trim())
+    
+    if(!variables.__varTypes) variables.__varTypes = {}
+    
+    if(variables.hasOwnProperty(name)){
+        console.error(`Cannot redeclare variable '${name}' - it is already defined as '${variables.__varTypes[name]}'`)
+        return
+    }
+    
+    value = evaluateExpression(value, variables)
+
+    if(type === "string") value = String(value)
+    else if(type === "int") value = parseInt(value)
+    else if(type === "float") value = parseFloat(value)
+    else if(type === "bool") value = Boolean(value)
+
+    variables.__varTypes[name] = 'const'
+    
+    variables[name] = value
+}
