@@ -43,10 +43,10 @@ if (favNumber > 40) {
     dump("Fav number is less than or equal to 40");
 }
 
-appendToBody(`
+appendToBody(h`
     <ul>
-        <li>favColour: ${favColour}</li>
-        <li>favNumber: ${favNumber}</li>
+        <li>favColour: </li>
+        <li>favNumber: </li>
     </ul>
 `);
 

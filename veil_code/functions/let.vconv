@@ -2,6 +2,10 @@
 // NAME: let
 // DESCRIPTION: Declares a variable with type annotation
 // TRIGGER: let
+// HOVER: let variableName: type = value; Declares a mutable variable.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(line.startsWith("let ")){

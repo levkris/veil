@@ -2,6 +2,10 @@
 // NAME: assign
 // DESCRIPTION: Assigns a new value to an existing variable
 // TRIGGER: =
+// HOVER: null
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(beforeTrigger && afterTrigger && !line.startsWith('let ') && !line.startsWith('const ')){

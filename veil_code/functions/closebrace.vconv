@@ -2,6 +2,10 @@
 // NAME: Close Brace
 // DESCRIPTION: Closes conditional blocks
 // TRIGGER: }
+// HOVER: closebrace: Closes a code block.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(variables.__ifStack && variables.__ifStack.length > 0) {

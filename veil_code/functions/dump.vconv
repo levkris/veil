@@ -2,6 +2,10 @@
 // NAME: dump
 // DESCRIPTION: Displays the value of an expression as formatted text on the page
 // TRIGGER: dump
+// HOVER: dump(value): Displays the value of an expression as formatted text on the page.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(line.startsWith("dump(") && line.endsWith(");")){

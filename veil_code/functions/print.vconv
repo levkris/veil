@@ -2,6 +2,10 @@
 // NAME: print
 // DESCRIPTION: Prints value to the console without sanitization
 // TRIGGER: print
+// HOVER: print(value): Prints to the console without sanitization.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(line.startsWith("print(") && line.endsWith(");")){

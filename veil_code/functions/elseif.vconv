@@ -2,6 +2,10 @@
 // NAME: ElseIf Statement
 // DESCRIPTION: Conditional execution after an if or elseif
 // TRIGGER: } elseif(
+// HOVER: elseif (condition) { ... } Executes the block if the previous if/elseif was false and this condition is true.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(!variables.__ifStack || variables.__ifStack.length === 0) return

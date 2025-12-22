@@ -2,6 +2,10 @@
 // NAME: const
 // DESCRIPTION: Declares a constant variable with type annotation (cannot be redeclared)
 // TRIGGER: const
+// HOVER: const variableName: type = value; Declares a constant variable.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(line.startsWith("const ")){

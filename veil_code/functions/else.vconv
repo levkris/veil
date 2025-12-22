@@ -2,6 +2,10 @@
 // NAME: Else Statement
 // DESCRIPTION: Executes only if all previous if/else if conditions in the chain are false
 // TRIGGER: } else {
+// HOVER: else { ... } Executes the block if all previous if/elseif conditions were false.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 if(!variables.__ifStack || variables.__ifStack.length === 0) return

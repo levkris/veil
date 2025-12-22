@@ -1,0 +1,182 @@
+[
+	{
+		"name": "appendToBody",
+		"description": "Appends HTML to the page body",
+		"trigger": "appendToBody",
+		"hover": "appendToBody(content): Appends HTML/text to the page body.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "assign",
+		"description": "Assigns a new value to an existing variable",
+		"trigger": "=",
+		"hover": null,
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "Close Brace",
+		"description": "Closes conditional blocks",
+		"trigger": "closebrace",
+		"hover": "closebrace: Closes a code block.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "const",
+		"description": "Declares a constant variable with type annotation (cannot be redeclared)",
+		"trigger": "const",
+		"hover": "const variableName: type = value; Declares a constant variable.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "dump",
+		"description": "Displays the value of an expression as formatted text on the page",
+		"trigger": "dump",
+		"hover": "dump(value): Displays the value of an expression as formatted text on the page.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "Else Statement",
+		"description": "Executes only if all previous if/else if conditions in the chain are false",
+		"trigger": "else",
+		"hover": "else { ... } Executes the block if all previous if/elseif conditions were false.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "ElseIf Statement",
+		"description": "Conditional execution after an if or elseif",
+		"trigger": "elseif",
+		"hover": "elseif (condition) { ... } Executes the block if the previous if/elseif was false and this condition is true.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "If Statement",
+		"description": "Conditional execution",
+		"trigger": "if",
+		"hover": "if (condition) { ... } Executes the block if the condition is true.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "let",
+		"description": "Declares a variable with type annotation",
+		"trigger": "let",
+		"hover": "let variableName: type = value; Declares a mutable variable.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "print",
+		"description": "Prints value to the console without sanitization",
+		"trigger": "print",
+		"hover": "print(value): Prints to the console without sanitization.",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+	{
+		"name": "printS",
+		"description": "Prints sanitized string to the console",
+		"trigger": "printS",
+		"hover": "printS(value): Prints to the console with sanitization (safe for HTML).",
+		"implemented_version": "0.0.1",
+		"implemented_by": "wokki20",
+		"deprecated": false,
+		"deprecated_version": null
+	},
+        {
+        "name": "true",
+        "description": "Boolean literal representing truth.",
+        "trigger": "true",
+        "hover": "true: Boolean literal representing truth.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "false",
+        "description": "Boolean literal representing falsehood.",
+        "trigger": "false",
+        "hover": "false: Boolean literal representing falsehood.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "null",
+        "description": "Represents an empty value.",
+        "trigger": "null",
+        "hover": "null: Represents an empty value.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "int",
+        "description": "Integer type.",
+        "trigger": "int",
+        "hover": "int: Integer type.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "string",
+        "description": "String type.",
+        "trigger": "string",
+        "hover": "string: String type.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "bool",
+        "description": "Boolean type.",
+        "trigger": "bool",
+        "hover": "bool: Boolean type.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    },
+    {
+        "name": "float",
+        "description": "Floating-point number type.",
+        "trigger": "float",
+        "hover": "float: Floating-point number type.",
+        "implemented_version": "0.0.1",
+        "implemented_by": "wokki20",
+        "deprecated": false,
+        "deprecated_version": null
+    }
+]

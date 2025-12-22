@@ -2,6 +2,10 @@
 // NAME: If Statement
 // DESCRIPTION: Conditional execution
 // TRIGGER: if(
+// HOVER: if (condition) { ... } Executes the block if the condition is true.
+// IMPLEMENTED_VERSION: 0.0.1
+// IMPLEMENTED_BY: wokki20
+// DEPRECATED: false
 
 // HANDLER
 let match = line.match(/if\s*\(\s*(.*?)\s*\)\s*\{/)

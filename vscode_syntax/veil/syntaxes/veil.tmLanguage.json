@@ -56,7 +56,18 @@
 		},
 		"templateStrings": {
 			"patterns": [
-				{ "name": "string.quoted.template.veil", "begin": "`", "end": "`" }
+				{
+					"name": "string.quoted.template.veil",
+					"begin": "`",
+					"end": "`"
+				},
+				{
+					"begin": "h`",
+					"end": "`",
+					"patterns": [
+						{ "include": "text.html.basic" }
+					]
+				}
 			]
 		},
 		"operators": {
