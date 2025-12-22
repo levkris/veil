@@ -102,6 +102,16 @@ function evaluateExpression(expr, variables){
         }
     }
 
+    if(expr.startsWith('`') && expr.endsWith('`')){
+        let template = expr.slice(1, -1)
+        
+        template = template.replace(/\$\{(\w+)\}/g, (match, varName) => {
+            return variables[varName] !== undefined ? variables[varName] : match
+        })
+        
+        return template
+    }
+
     let parts = []
     let current = ''
     let inString = false
@@ -160,13 +170,13 @@ function evaluateExpression(expr, variables){
             }
             result += code
         } else if(part.type === 'template'){
-            let template = part.value
-            for(let v in variables){
-                if(v.startsWith('__')) continue
-                let regex = new RegExp('\\$\\{' + v + '\\}', 'g')
-                template = template.replace(regex, variables[v])
-            }
-            result += template
+            let template = part.value.slice(1, -1)
+            
+            template = template.replace(/\$\{(\w+)\}/g, (match, varName) => {
+                return variables[varName] !== undefined ? variables[varName] : match
+            })
+            
+            result += JSON.stringify(template)
         } else {
             result += part.value
         }
@@ -204,13 +214,21 @@ function executeLine(line, variables){
 
     let matched = false
     for(let trigger in veilFunctions){
-        let {handler, regex} = veilFunctions[trigger]
-        let match = line.match(regex)
-        if(match){
+        let {handler, rawTrigger} = veilFunctions[trigger]
+        
+        if(rawTrigger === '}' || rawTrigger === '} else {' || rawTrigger === '} elseif ('){
+            if(trimmed.startsWith(rawTrigger)){
+                try {
+                    handler(line, variables, evaluateExpression, sanitize)
+                    matched = true
+                    break
+                } catch(e){
+                    console.error(`Error executing ${trigger}:`, e)
+                }
+            }
+        } else if(line.includes(rawTrigger)){
             try {
-                let beforeTrigger = match[1] ? match[1].trim() : ''
-                let afterTrigger = match[2] ? match[2].trim() : ''
-                handler(line, variables, evaluateExpression, sanitize, beforeTrigger, afterTrigger)
+                handler(line, variables, evaluateExpression, sanitize)
                 matched = true
                 break
             } catch(e){

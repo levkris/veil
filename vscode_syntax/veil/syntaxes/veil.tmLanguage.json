@@ -59,7 +59,22 @@
 				{
 					"name": "string.quoted.template.veil",
 					"begin": "`",
-					"end": "`"
+					"end": "`",
+					"patterns": [
+						{
+							"begin": "\\$\\{",
+							"beginCaptures": {
+								"0": { "name": "keyword.operator.veil" }
+							},
+							"end": "\\}",
+							"endCaptures": {
+								"0": { "name": "keyword.operator.veil" }
+							},
+							"patterns": [
+								{ "include": "#variables" }
+							]
+						}
+					]
 				},
 				{
 					"begin": "h`",

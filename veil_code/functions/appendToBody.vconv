@@ -8,8 +8,13 @@
 // DEPRECATED: false
 
 // HANDLER
-if(line.startsWith("appendToBody(") && line.endsWith(");")){
-    let expr = line.slice(13,-2)
-    let val = evaluateExpression(expr, variables)
-    document.body.innerHTML += `${val}`
+if (line.startsWith("appendToBody(") && line.endsWith(");")) {
+    let expr = line.slice(13, -2);
+    
+    if (expr.startsWith("h`") && expr.endsWith("`")) {
+        expr = expr.slice(1);
+    }
+    
+    let val = evaluateExpression(expr, variables);
+    document.body.innerHTML += `${val}`;
 }

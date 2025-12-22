@@ -38,15 +38,15 @@ favColour = "red";
 printS("Your fav colour is " + favColour);
 
 if (favNumber > 40) {
-    dump("Fav number is greater than 40");
+    dump(`Fav number is greater than 40, it is ${favNumber}`);
 } else {
     dump("Fav number is less than or equal to 40");
 }
 
 appendToBody(h`
     <ul>
-        <li>favColour: </li>
-        <li>favNumber: </li>
+        <li>favColour: ${favColour}</li>
+        <li>favNumber: ${favNumber}</li>
     </ul>
 `);
 

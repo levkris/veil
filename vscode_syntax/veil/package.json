@@ -3,6 +3,8 @@
   "displayName": "Veil",
   "description": "Veil is a web-first programming language that runs directly in the browser. It lets you write code as an alternative to JavaScript, automatically converting your Veil code into JavaScript on the fly, no compilation needed.",
   "version": "0.0.1",
+  "publisher": "wokki20",
+  "icon": "./src/assets/icon.png",
   "engines": {
     "vscode": "^1.107.0"
   },
@@ -14,16 +16,24 @@
       "onLanguage:veil"
   ],
   "contributes": {
-    "languages": [{
-      "id": "veil",
-      "aliases": ["VEIL", "veil"],
-      "extensions": [".veil"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "veil",
-      "scopeName": "source.veil",
-      "path": "./syntaxes/veil.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "veil",
+        "aliases": ["VEIL", "veil"],
+        "extensions": [".veil"],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "dark": "./src/assets/icon_veil.png",
+          "light": "./src/assets/icon_veil.png"
+        }
+      }
+    ],
+    "grammars": [
+      {
+        "language": "veil",
+        "scopeName": "source.veil",
+        "path": "./syntaxes/veil.tmLanguage.json"
+      }
+    ]
   }
 }
